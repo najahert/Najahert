@@ -39,8 +39,8 @@ class SimpleAdminPanel {
             transition: color 0.3s;
         `;
         
-        dot.onmouseover = () => dot.style.color = 'rgba(0,0,0,0.5)';
-        dot.onmouseout = () => dot.style.color = 'rgba(0,0,0,0.2)';
+        dot.onmouseover = () => dot.style.color = 'rgba(0,0,0,0.0)';
+        dot.onmouseout = () => dot.style.color = 'rgba(0,0,0,0.0)';
         dot.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
