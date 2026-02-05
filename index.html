@@ -362,5 +362,38 @@
     <!-- آخر خط قبل از </body> این را اضافه کن: -->
 <!-- بعد از اسکریپت‌های موجود اضافه کن -->
 <script src="admin.js"></script>
+    <script>
+// کد نقطه - مستقیماً در HTML
+document.addEventListener('DOMContentLoaded', function() {
+    // ایجاد نقطه
+    const dot = document.createElement('div');
+    dot.innerHTML = '•';
+    dot.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
+        color: #FF0000;
+        opacity: 0.3;
+        cursor: pointer;
+        z-index: 999999;
+        user-select: none;
+        transition: opacity 0.3s;
+    `;
+    
+    dot.onmouseover = () => dot.style.opacity = '1';
+    dot.onmouseout = () => dot.style.opacity = '0.3';
+    dot.onclick = function() {
+        const pass = prompt('رمز پنل:', '');
+        if (pass === 'admin123') {
+            alert('پنل مدیریت - اینجا لاگ‌ها نمایش داده می‌شوند');
+            // اینجا کد پنل را اضافه کن
+        }
+    };
+    
+    document.body.appendChild(dot);
+    console.log('✅ نقطه اضافه شد - رنگ قرمز');
+});
+    </script>
 </body>
 </html>
