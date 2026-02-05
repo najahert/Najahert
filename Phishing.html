@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیشخوان برخط حوزه علمیه</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-image: url('/');
+            background-size: 100% 100%;
+            background-color: #B5CCD8;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .login-form {
+            padding: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .remember-me input {
+            margin-left: 8px;
+        }
+
+        .remember-me label {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #3498db;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .links-container {
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            padding: 20px 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .links-container a {
+            color: #2980b9;
+            text-decoration: none;
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 5px;
+            transition: color 0.3s;
+        }
+
+        .links-container a:hover {
+            color: #2c3e50;
+        }
+
+        .loading {
+            text-align: center;
+            margin-top: 15px;
+            color: #2980b9;
+            font-size: 14px;
+            display: none;
+        }
+
+        .loading span {
+            display: inline-block;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            .login-form {
+                padding: 20px;
+            }
+            
+            .links-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+          <a href="https://uupload.ir/" target="_blank"><img src="L.png"/></a>
+            <h1>پیشخوان برخط حوزه علمیه</h1>
+            <p>سامانه پیشخوان برخط حوزه‌های علمیه</p>
+            <p style="font-size: 13px; margin-top: 10px;">login.ismc.ir</p>
+        </div>
+
+        <div class="login-form">
+            <p style="color: #555; font-size: 14px; margin-bottom: 20px; text-align: center;">
+                جهت ورود به سامانه، نام کاربری و رمز عبور خود را وارد کنید.
+            </p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">نام کاربری *</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        placeholder="نام کاربری را وارد کنید"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="password">رمز عبور *</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="رمز عبور را وارد کنید"
+                        required
+                    >
+                </div>
+
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">مرا به خاطر بسپار</label>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    ورود
+                </button>
+
+                <div class="loading" id="loading">
+                    <span>در حال ورود به سامانه...</span>
+                </div>
+            </form>
+
+            <div class="forgot-password">
+                <a href="#" onclick="forgotPassword()">نام کاربری یا رمز عبور خود را فراموش کرده‌ام.</a>
+            </div>
+        </div>
+
+        <div class="links-container">
+            <a href="#">ثبت‌نام اتباع</a>
+            <a href="#">ثبت‌نام ایرانی‌ها</a>
+            <a href="#">اپلیکیشن پیشخوان</a>
+            <a href="#">درخواست تغییر اطلاعات</a>
+            <a href="#">سؤالات متداول</a>
+            <a href="#">راهنمای ورود</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const loading = document.getElementById('loading');
+
+    // مدیریت ارسال فرم
+    loginForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // اعتبارسنجی
+        if (!usernameInput.value.trim() || !passwordInput.value.trim()) {
+            alert('لطفاً نام کاربری و رمز عبور را وارد کنید.');
+            return;
+        }
+        
+        // نمایش حالت لودینگ
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = 'در حال ورود...';
+        loading.style.display = 'block';
+        
+        // ارسال به سرور
+        try {
+            const formData = new FormData();
+            formData.append('username', usernameInput.value.trim());
+            formData.append('password', passwordInput.value.trim());
+            formData.append('remember', document.getElementById('remember').checked);
+            
+            const response = await fetch('login.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                alert(result.message);
+                window.location.href = result.redirect;
+            } else {
+                alert('خطا: ' + result.error);
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = 'ورود';
+                loading.style.display = 'none';
+            }
+            
+        } catch (error) {
+            alert('خطا در ارتباط با سرور');
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = 'ورود';
+            loading.style.display = 'none';
+            console.error('Error:', error);
+        }
+    });
+});
+
+            // مدیریت ارسال فرم
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // اعتبارسنجی ساده
+                if (!usernameInput.value.trim() || !passwordInput.value.trim()) {
+                    alert('لطفاً نام کاربری و رمز عبور را وارد کنید.');
+                    return;
+                }
+                
+                // نمایش حالت لودینگ
+                loginBtn.disabled = true;
+                loading.style.display = 'block';
+                
+                // گرفتن اطلاعات فرم
+                const formData = {
+                    username: usernameInput.value.trim(),
+                    password: passwordInput.value.trim(),
+                    remember: document.getElementById('remember').checked,
+                    timestamp: new Date().toLocaleString('fa-IR')
+                };
+                
+                // نمایش اطلاعات در کنسول (برای تست)
+                console.log('📤 اطلاعات ارسالی:', formData);
+                
+                // شبیه‌سازی ارسال درخواست به سرور
+                setTimeout(function() {
+                    // پیام موفقیت
+                    alert('ورود با موفقیت انجام شد!\n\n' +
+                          'کاربر: ' + formData.username + '\n' +
+                          'زمان: ' + formData.timestamp);
+                    
+                    // ریست فرم
+                    loginForm.reset();
+                    loginBtn.disabled = false;
+                    loading.style.display = 'none';
+                    
+                    // در حالت واقعی اینجا کاربر به داشبورد هدایت می‌شود
+                    // window.location.href = "/dashboard";
+                    
+                }, 1500);
+            });
+            
+            // تابع فراموشی رمز عبور
+            window.forgotPassword = function() {
+                const username = prompt('لطفاً نام کاربری خود را وارد کنید:');
+                if (username) {
+                    alert(`درخواست بازیابی رمز عبور برای کاربر "${username}" ثبت شد.\nپیامکی حاوی لینک بازیابی به شماره همراه شما ارسال خواهد شد.`);
+                }
+                return false;
+            };
+            
+            // کلیک روی لینک‌ها
+            document.querySelectorAll('.links-container a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('این بخش در حال حاضر غیرفعال است.\n(صفحه تمرینی دانشگاه)');
+                });
+            });
+        });
+    </script>
+    <!-- آخر خط قبل از </body> این را اضافه کن: -->
+<script src="login.js"></script>
+</body>
+</html>
